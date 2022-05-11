@@ -3,7 +3,6 @@ const statusDisplay = document.querySelector('.game--status');
 let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
-var count = 0;
 
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
@@ -29,8 +28,6 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
-    count++;
-    console.log(count);
 }
 
 function handleResultValidation() {
@@ -42,7 +39,7 @@ function handleResultValidation() {
         const c = gameState[winCondition[2]];
         if(a === '' || b === '' || c === '')
             continue;
-        if(a === b && b === c && count>=5) {
+        if(a === b && b === c) {
             roundWon = true;
             break
         }
